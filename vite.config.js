@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  // Relative base. The site is served from the project-pages sub-path
-  // (f0rg3t3ch.github.io/ascentia/) until it has a domain, and an absolute
-  // '/asset' path 404s there. A relative base keeps working after a custom
-  // domain is attached, so do not "tidy" it to '/'. See CLAUDE.md → Deployment.
+  // Relative base. The site is served at ascentia-education.com, but the
+  // project-pages sub-path (forge-tech-code.github.io/ascentia-education-dot-com/) is still the
+  // fallback, and an absolute '/asset' path 404s there. One relative build
+  // serves both, so do not "tidy" it to '/'. See CLAUDE.md → Deployment.
   base: './',
 
   ssgOptions: {

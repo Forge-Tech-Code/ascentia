@@ -60,7 +60,7 @@ export function assetPrefix(lang) {
 
 /**
  * A DOCUMENT-RELATIVE href from one locale's page to another's. Never a
- * root-relative '/en/': under f0rg3t3ch.github.io/ascentia/ a leading slash
+ * root-relative '/en/': under forge-tech-code.github.io/ascentia-education-dot-com/ a leading slash
  * escapes the sub-path.
  *
  *   hr → en   './en/'      en → hr   '../'      hr → hr   './'

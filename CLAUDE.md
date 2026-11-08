@@ -8,8 +8,8 @@ A one-page static site for **Ascentia Education**, an education centre in Supeta
 Croatia. It is built **twice, once per language** — `/` in Croatian and `/en/` in English — from one set of
 components and two dictionaries.
 
-**This is a first draft that the client has not seen yet.** Expect the copy, the sections and the look to
-change. Read "What's real, what's a draft" before writing any content.
+**The client approved this draft and it launched on 2026-11-08**, but the copy, the sections and the look
+can still change. Read "What's real, what's a draft" before writing any content.
 
 It is a sibling of `word-and-rijec-dot-com`, `guy-catz-dot-com` and `veli-bol-home` (currently under
 `~/repositories/xarlos89@github.com/`) and was ported from the first of those. When something here is
@@ -34,7 +34,7 @@ React 18, Vite 5 (`base: './'`), `vite-react-ssg`, Tailwind 3, react-router-dom 
 only). No backend, no analytics, no form.
 
 ```
-index.html              <head>: only what is identical in both languages, incl. the pre-launch noindex
+index.html              <head>: only what is identical in both languages (charset, viewport, icons, fonts)
 src/
   main.jsx              vite-react-ssg entry + runtime basename detection
   routes.jsx            one route per language
@@ -69,18 +69,18 @@ Croatian is the root and `x-default`: the centre serves local families first.
 
 ### Relative paths — the two traps
 
-`base: './'` lets one build run at a domain root and under `f0rg3t3ch.github.io/ascentia/`. It has two
+`base: './'` lets one build run at a domain root and under `forge-tech-code.github.io/ascentia-education-dot-com/`. It has two
 consequences:
 
 1. **Assets from a page one directory down.** `./assets/x` inside `/en/index.html` resolves to
    `/en/assets/x`. The `onPageRendered` hook in `vite.config.js` rewrites what Vite emits; our own
    references go through `asset()` / `responsivePhoto()` **taken off `useLang()`**, and the switcher uses
    `localeHref()`. Never write a root-relative `/en/` or `/images/…`.
-2. **The router under a sub-path.** react-router matches the full pathname, and `/ascentia/` is not a
+2. **The router under a sub-path.** react-router matches the full pathname, and `/ascentia-education-dot-com/` is not a
    route, so without help the prerendered page is replaced by "404 Not Found" on hydration.
    `detectBasename()` in `src/main.jsx` works the mount point out from the address bar. `npm run preview`
-   serves at `/` and will not show this bug — to test it, serve `dist/` from a directory named `ascentia`
-   one level up (`python3 -m http.server`) and open `/ascentia/` and `/ascentia/en/`.
+   serves at `/` and will not show this bug — to test it, serve `dist/` from a directory named `ascentia-education-dot-com`
+   one level up (`python3 -m http.server`) and open `/ascentia-education-dot-com/` and `/ascentia-education-dot-com/en/`.
 
 ## Brand
 
@@ -116,23 +116,38 @@ and replace all of these.
 
 ## Deployment
 
-Push to `main` → `.github/workflows/deploy.yml` builds and publishes `dist/` to GitHub Pages at
-**https://f0rg3t3ch.github.io/ascentia/**. There is no custom domain and no `public/CNAME` yet.
+Push to `main` → `.github/workflows/deploy.yml` builds and publishes `dist/` to GitHub Pages. The repo lives
+in the **forge-tech-code** org. The site is served at **https://ascentia-education.com/** (domain registered
+at Namecheap). `https://forge-tech-code.github.io/ascentia-education-dot-com/` is the fallback and redirects to the domain.
 
-The origin is typed out in four places that have to change together: `src/siteInfo.js` (`site.url`),
-`public/sitemap.xml`, `public/robots.txt` and `public/404.html`.
+The custom domain is attached in the repo's **Settings → Pages → Custom domain**. With an Actions workflow
+that setting is what counts; `public/CNAME` is kept to match the sibling sites and to record the domain.
 
-### Launch checklist
+The origin is typed out in five places that have to change together: `src/siteInfo.js` (`site.url`),
+`public/sitemap.xml`, `public/robots.txt`, `public/404.html` and `public/CNAME` (bare domain only).
 
-The site is deliberately hidden from search until the client approves it.
+### DNS (Namecheap → Advanced DNS)
 
-1. Remove `<meta name="robots" content="noindex, follow">` from `index.html`. (`robots.txt` already allows
-   crawling — it has to, or Google never sees the noindex.)
-2. If there is a domain: add `public/CNAME`, set the DNS records for GitHub Pages, and change the origin in
-   the four places above.
-3. Verify the property in Google Search Console (a Domain property by DNS TXT, as on the sibling sites) and
-   submit `sitemap.xml`.
-4. Bump both `<lastmod>` values in `public/sitemap.xml`.
+```
+A      @    185.199.108.153
+A      @    185.199.109.153
+A      @    185.199.110.153
+A      @    185.199.111.153
+AAAA   @    2606:50c0:8000::153
+AAAA   @    2606:50c0:8001::153
+AAAA   @    2606:50c0:8002::153
+AAAA   @    2606:50c0:8003::153
+CNAME  www  forge-tech-code.github.io.
+```
+
+GitHub redirects `www` to the apex. Tick **Enforce HTTPS** in Settings → Pages once the certificate is
+issued. The Search Console Domain property is verified by a `google-site-verification` TXT on `@`; leave
+it in place.
+
+### Launched 2026-11-08
+
+The pre-launch `noindex` is gone from `index.html` (`public/404.html` keeps its own, on purpose). Bump both
+`<lastmod>` values in `public/sitemap.xml` whenever the page content changes.
 
 ## What's real, what's a draft
 

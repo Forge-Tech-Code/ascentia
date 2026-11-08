@@ -10,8 +10,8 @@ A static one-page site in Croatian (`/`) and English (`/en/`), built with React,
 You need Node 20 or newer (the deploy uses 26) and npm.
 
 ```bash
-git clone git@github.com:f0rg3t3ch/ascentia.git
-cd ascentia
+git clone git@github.com:Forge-Tech-Code/ascentia-education-dot-com.git
+cd ascentia-education-dot-com
 npm install
 npm run dev
 ```
@@ -44,6 +44,6 @@ npm run preview    # serves dist/ at http://localhost:4173
 ### Deploy
 
 Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and publishes to
-https://f0rg3t3ch.github.io/ascentia/.
+https://ascentia-education.com/.
 
 See `CLAUDE.md` for how the two languages work, what on the site is still a draft, and the launch checklist.

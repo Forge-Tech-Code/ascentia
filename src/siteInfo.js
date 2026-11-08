@@ -21,5 +21,5 @@ export const site = {
   // The canonical origin. Seo.jsx derives the canonical, og:url, hreflang and
   // JSON-LD from this. public/sitemap.xml, robots.txt and 404.html are static
   // files that carry their own copy — change them together.
-  url: 'https://f0rg3t3ch.github.io/ascentia/',
+  url: 'https://ascentia-education.com/',
 }

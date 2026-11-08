@@ -3,15 +3,15 @@ import { site } from '../siteInfo'
 import { useLang } from '../i18n'
 import { DEFAULT_LANG, LANGS, localePath, localeTag, localeOgTag } from '../i18n/locales'
 
-/** Absolute URL of a locale's page, e.g. https://…/ascentia/en/ */
+/** Absolute URL of a locale's page, e.g. https://ascentia-education.com/en/ */
 export function localeUrl(lang) {
   return `${site.url.replace(/\/$/, '')}${localePath[lang]}`
 }
 
 /**
  * Everything in <head> that differs between the two languages. index.html
- * keeps only what is identical on both (charset, viewport, the pre-launch
- * noindex, icons, font preloads).
+ * keeps only what is identical on both (charset, viewport, icons, font
+ * preloads).
  *
  * The JSON-LD claims ONLY what the client's posters state: the name, the
  * phone, the email, the street address and the two languages. No person,

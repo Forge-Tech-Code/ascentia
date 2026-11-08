@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://f0rg3t3ch.github.io/ascentia/sitemap.xml
+Sitemap: https://ascentia-education.com/sitemap.xml
