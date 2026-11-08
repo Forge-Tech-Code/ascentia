@@ -11,8 +11,8 @@ components and two dictionaries.
 **The client approved this draft and it launched on 2026-11-08**, but the copy, the sections and the look
 can still change. Read "What's real, what's a draft" before writing any content.
 
-It is a sibling of `word-and-rijec-dot-com`, `guy-catz-dot-com` and `veli-bol-home` (currently under
-`~/repositories/xarlos89@github.com/`) and was ported from the first of those. When something here is
+It is a sibling of `word-and-rijec-dot-com`, `guy-catz-dot-com` and `veli-bol-home` (all under
+`~/repositories/f0rg3t3ch@github.com/`) and was ported from the first of those. When something here is
 unclear, `word-and-rijec-dot-com` and its `CLAUDE.md` are the reference.
 
 ## Commands

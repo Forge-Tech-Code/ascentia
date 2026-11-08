@@ -1,4 +1,4 @@
-# ascentia
+# ascentia-education-dot-com
 
 The website for Ascentia Education, an education centre in Supetar on the island of Brač.
 
