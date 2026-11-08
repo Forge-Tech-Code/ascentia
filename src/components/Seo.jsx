@@ -13,10 +13,11 @@ export function localeUrl(lang) {
  * keeps only what is identical on both (charset, viewport, icons, font
  * preloads).
  *
- * The JSON-LD claims ONLY what the client's posters state: the name, the
- * phone, the email, the street address and the two languages. No person,
- * price, opening hours, rating or review — none of it is known. Add to it as
- * real details arrive, never to pad it out.
+ * The JSON-LD is a WebSite node (where Google takes the site name shown in
+ * results from) plus the organisation. The organisation claims ONLY what the
+ * client's posters state: the name, the phone, the email, the street address
+ * and the two languages. No person, price, opening hours, rating or review —
+ * none of it is known. Add to it as real details arrive, never to pad it out.
  */
 export default function Seo() {
   const { lang, t } = useLang()
@@ -26,22 +27,34 @@ export default function Seo() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${site.url}#organization`,
-    name: site.name,
-    url: site.url,
-    logo: `${origin}/icon-512.png`,
-    image: ogImage,
-    description: t.meta.description,
-    email: site.email,
-    telephone: site.phone.replace(/\s/g, ''),
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: site.street,
-      addressLocality: site.town,
-      addressCountry: site.country,
-    },
-    knowsLanguage: LANGS.map((l) => localeTag[l]),
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${site.url}#website`,
+        url: site.url,
+        name: site.name,
+        publisher: { '@id': `${site.url}#organization` },
+        inLanguage: LANGS.map((l) => localeTag[l]),
+      },
+      {
+        '@type': 'EducationalOrganization',
+        '@id': `${site.url}#organization`,
+        name: site.name,
+        url: site.url,
+        logo: `${origin}/icon-512.png`,
+        image: ogImage,
+        description: t.meta.description,
+        email: site.email,
+        telephone: site.phone.replace(/\s/g, ''),
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.street,
+          addressLocality: site.town,
+          addressCountry: site.country,
+        },
+        knowsLanguage: LANGS.map((l) => localeTag[l]),
+      },
+    ],
   }
 
   return (

@@ -144,10 +144,23 @@ GitHub redirects `www` to the apex. Tick **Enforce HTTPS** in Settings → Pages
 issued. The Search Console Domain property is verified by a `google-site-verification` TXT on `@`; leave
 it in place.
 
-### Launched 2026-11-08
+### Indexing and Google Search Console
 
-The pre-launch `noindex` is gone from `index.html` (`public/404.html` keeps its own, on purpose). Bump both
-`<lastmod>` values in `public/sitemap.xml` whenever the page content changes.
+**The site has been open to search since its launch on 2026-11-08.** `index.html` has no `robots` meta tag
+(`public/404.html` keeps its own `noindex` on purpose), and `public/robots.txt` is `Allow: /` and names the
+sitemap.
+
+- **Search Console is a Domain property verified by a DNS TXT record on `@` at Namecheap.** There is no
+  verification tag or file in the repo, and none is needed. Deleting that TXT record loses the property.
+- The sitemap (`https://ascentia-education.com/sitemap.xml`) is submitted there. **Bump both `<lastmod>`
+  values** in `public/sitemap.xml` whenever the page content changes; Google ignores `changefreq` and
+  `priority`.
+- To hide a page again, use a `noindex` meta tag **with robots.txt still allowing crawling**. A `Disallow`
+  stops Google fetching the page, so it never sees the noindex.
+- The JSON-LD in `src/components/Seo.jsx` is a `WebSite` node (Google's source for the site name shown in
+  results) and an `EducationalOrganization`, joined by `@id`. Both pages emit the same root `url`, so they
+  describe one entity. Check it with the Rich Results Test or Search Console → Enhancements. Its `logo` is
+  the hand-drawn puzzle icon (`icon-512.png`) until the client sends the real logo.
 
 ## What's real, what's a draft
 
