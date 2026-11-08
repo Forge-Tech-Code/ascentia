@@ -2,22 +2,12 @@ import { useLang } from '../i18n'
 import PuzzlePiece from '../components/PuzzlePiece'
 import Reveal from '../components/Reveal'
 
-function Points({ items }) {
-  return (
-    <ul className="mt-4 space-y-2.5">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3 font-sans text-[15px] sm:text-base text-ink">
-          <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 shrink-0 rounded-full bg-teal" />
-          {item}
-        </li>
-      ))}
-    </ul>
-  )
-}
+// Decorative fills for the service cards, in turn.
+const ACCENTS = ['text-mauve', 'text-sun', 'text-teal']
 
 export default function Programmes() {
   const { t } = useLang()
-  const { early, languages } = t.programmes
+  const { early, services } = t.programmes
 
   return (
     <section id="programmes" className="bg-sage py-16 sm:py-24">
@@ -42,20 +32,20 @@ export default function Programmes() {
           </div>
         </Reveal>
 
-        {/* Croatian and English — the "Learn Croatian and English!" poster */}
+        {/* The four services from the client's feedback */}
         <Reveal className="mt-8">
-          <div className="rounded-blob bg-peach p-7 sm:p-10 shadow-soft">
-            <h3 className="font-display font-semibold uppercase text-berry leading-tight" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
-              {languages.heading}
-            </h3>
-            <div className="mt-7 grid sm:grid-cols-2 gap-5">
-              {[languages.kids, languages.adults].map((group) => (
-                <div key={group.title} className="card">
-                  <h4 className="font-display font-semibold uppercase tracking-wide text-xl text-teal-deep">{group.title}</h4>
-                  <Points items={group.points} />
+          <div className="grid sm:grid-cols-2 gap-5">
+            {services.map((service, i) => (
+              <div key={service.title} className="card flex gap-5 items-start">
+                <PuzzlePiece
+                  className={`shrink-0 w-12 h-12 ${ACCENTS[i % ACCENTS.length]} ${i % 2 ? 'rotate-12' : '-rotate-12'}`}
+                />
+                <div>
+                  <h3 className="font-display font-semibold text-2xl text-teal-deep">{service.title}</h3>
+                  <p className="mt-1.5 font-sans text-base text-ink">{service.body}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>

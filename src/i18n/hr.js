@@ -40,17 +40,16 @@ export default {
       title: 'Od 4 do 6 godina',
       body: 'Učenje kroz igru, kreativnost i istraživanje.',
     },
-    languages: {
-      heading: 'Učite hrvatski i engleski!',
-      kids: {
-        title: 'Za djecu',
-        points: ['Učenje kroz zabavu', 'Interaktivne metode', 'Iskusni predavači'],
+    // Drafted from the client's English feedback (2026-11-08) — she must review it.
+    services: [
+      { title: 'Hrvatski jezik', body: 'Za one kojima hrvatski nije materinski — odrasle i djecu' },
+      { title: 'Engleski jezik', body: 'Za djecu i odrasle' },
+      { title: 'Instrukcije', body: 'Za učenike od 1. do 8. razreda' },
+      {
+        title: 'Individualni rad',
+        body: 'Rad jedan na jedan s djecom koja imaju poteškoća u učenju, uz misaone igre',
       },
-      adults: {
-        title: 'Za odrasle',
-        points: ['Engleski za sve razine', 'Hrvatski za strance', 'Individualan pristup'],
-      },
-    },
+    ],
   },
   learning: {
     heading: 'Što djeca uče',

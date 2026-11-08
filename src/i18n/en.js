@@ -37,17 +37,16 @@ export default {
       title: 'Ages 4–6',
       body: 'Learning through play, creativity, and exploration.',
     },
-    languages: {
-      heading: 'Learn Croatian and English!',
-      kids: {
-        title: 'For kids',
-        points: ['Fun learning', 'Interactive methods', 'Experienced tutors'],
+    // From the client's feedback, 2026-11-08.
+    services: [
+      { title: 'Croatian lessons', body: 'For non-Croatian speakers — adults and children' },
+      { title: 'English lessons', body: 'For kids and adults' },
+      { title: 'Tutoring', body: 'For pupils from 1st to 8th grade' },
+      {
+        title: 'One-on-one support',
+        body: 'Individual work with children who find learning difficult, including mind games',
       },
-      adults: {
-        title: 'For adults',
-        points: ['English for all levels', 'Croatian for foreigners', 'Personalized approach'],
-      },
-    },
+    ],
   },
   learning: {
     heading: 'What children learn',

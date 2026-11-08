@@ -93,7 +93,7 @@ pieces, a word-per-colour slogan). The hex values were sampled from those images
 | `sage` | `#A9C9A2` | the alternate ground |
 | `teal` / `teal-deep` | `#1C84A4` / `#0F5F78` | the wordmark colour / headings, buttons, links |
 | `mauve`, `sun` | `#B88CA0`, `#F4C442` | puzzle pieces, badges, accents — fills only |
-| `berry` | `#B85884` | the "Learn Croatian and English!" headline (large type only) |
+| `berry` | `#B85884` | currently unused (was the "Learn Croatian and English!" headline; large type only) |
 | `sage-deep`, `mauve-deep`, `sun-deep` | see `tailwind.config.js` | the slogan words; the poster tones are too pale to read as type on peach |
 | `cream` | `#FFF8F2` | cards and the navbar pill |
 | `ink` / `ink-soft` | `#23343B` / `#3F5058` | body type |
@@ -140,7 +140,9 @@ The site is deliberately hidden from search until the client approves it.
 
 - The name, the slogan "Small steps also reach big goals", "Learning through play, creativity, and
   exploration", "Join us – let's grow, learn, and play together!", "Enrolling now!", "Ages 4–6".
-- "Learn Croatian and English!" with the For kids / For adults points.
+- The four `programmes.services` (Croatian lessons, English lessons, tutoring 1st–8th grade, one-on-one
+  support with mind games) — from her feedback of 2026-11-08, lightly edited English. They replaced the
+  "Learn Croatian and English!" poster block. **Their Croatian is drafted here; she must review it.**
 - `learning.items` (Emotional literacy; Empathy and belonging) — **in both languages**. This is the only
   Croatian on the site that is her own.
 - The hero photo, the palette and the wordmark.
